@@ -1,0 +1,46 @@
+spring:
+  application:
+
+    name: application-integraciones
+  datasource:
+    driver-class-name: org.h2.Driver
+    initialSize: 5
+    maxActive: 10
+    maxIdle: 5
+    minIdle: 2
+    password: password
+    removeAbandoned: true
+    url: jdbc:h2:file:~/test-contracts;
+    username: sa
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        temp:
+          use_jdbc_metadata_defaults: false
+      jadira:
+        usertype:
+          autoRegisterUserTypes: true
+    show-sql: true
+logging:
+  level:
+    org.springframework.web: trace
+    org.hibernate.SQL: INFO
+  file:
+    name: c:/temp/contracts.log
