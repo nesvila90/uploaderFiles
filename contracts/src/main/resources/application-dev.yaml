@@ -8,10 +8,10 @@ spring:
     maxActive: 10
     maxIdle: 5
     minIdle: 2
+    username: sa
     password: password
     removeAbandoned: true
-    url: jdbc:h2:file:~/test-contracts;
-    username: sa
+    url: ${DATA_DB_FILE:jdbc:h2:file:~/test-contracts;}
   h2:
     console:
       enabled: true
@@ -38,9 +38,16 @@ spring:
         usertype:
           autoRegisterUserTypes: true
     show-sql: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 150MB
+      max-request-size: 150MB
 logging:
   level:
     org.springframework.web: trace
     org.hibernate.SQL: INFO
   file:
     name: c:/temp/contracts.log
+
+
